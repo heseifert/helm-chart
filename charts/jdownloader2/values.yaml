@@ -65,7 +65,7 @@ persistence:
   config:
     enabled: false
     mountPath: "/opt/JDownloader/app/cfg"
-    existingClaim: jdownloader-config
+    # existingClaim: jdownloader-config
   # -- use NFS for download folders
   media:
     enabled: false
@@ -73,8 +73,14 @@ persistence:
     volumeSpec:
       nfs:
         server: 10.0.0.1
-        path: /mnt/Media
-    mountPath: /opt/JDownloader/Downloads
+        path: "/mnt/Media"
+    mountPath: "/opt/JDownloader/Downloads"
     readOnly: false
 
-
+# -- Configure Limits for resources
+# resources:
+#   requests:
+#     memory: 128Mi
+#     cpu: "0.01"
+#   limits:
+#     memory: 512Mi
