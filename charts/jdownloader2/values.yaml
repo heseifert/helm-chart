@@ -24,7 +24,7 @@ env:
   # -- Set MyJD Password > use secretKeyRef:
   MYJD_PASSWORD: SECRET
   # -- Set MyJD Devicename
-  MYJD_DEVICE_NAME: MyJD
+  MYJD_DEVICE_NAME: JD
 
 # -- Configures service settings for the chart. Normally this does not need to be modified.
 # @default -- Disabled
@@ -34,11 +34,14 @@ service:
     ports:
       http:
         port: 5800
+        targetPort: 5800
   myjd:
     enabled: true
     ports:
       myjd:
+        enabled: true
         port: 3129
+        targetPort: 3129
 
 # -- Enable and configure ingress settings for the chart under this key.
 # @default -- Disabled
