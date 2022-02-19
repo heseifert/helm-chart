@@ -1,82 +1,77 @@
-# Default values for jdownloader2.
-# This is a YAML-formatted file.
-# Declare variables to be passed into your templates.
-
-replicaCount: 1
+#
+# IMPORTANT NOTE
+#
+# This chart inherits from our common library chart. You can check the default values/options here:
+# https://github.com/k8s-at-home/library-charts/tree/main/charts/stable/common/values.yaml
+#
+replicas: 1
 
 image:
-  repository: nginx
+  # -- image repository
+  repository: jaymoulin/jdownloader
+  # -- image pull policy
   pullPolicy: IfNotPresent
-  # Overrides the image tag whose default is the chart appVersion.
-  tag: ""
+  # -- image tag
+  tag: 2.0.3
 
-imagePullSecrets: []
-nameOverride: ""
-fullnameOverride: ""
+# -- environment variables. See more environment variables in the [emby documentation](https://emby.org/docs)
+# @default -- See below
+env:
+  # -- Set the container timezone
+  TZ: UTC
+  # --Set MyJD Username
+  MYJD_USER: "email@email.com"
+  # -- Set MyJD Password > use secretKeyRef:
+  MYJD_PASSWORD: SECRET
+  # -- Set MyJD Devicename
+  MYJD_DEVICE_NAME: MyJD
 
-serviceAccount:
-  # Specifies whether a service account should be created
-  create: true
-  # Annotations to add to the service account
-  annotations: {}
-  # The name of the service account to use.
-  # If not set and create is true, a name is generated using the fullname template
-  name: ""
-
-podAnnotations: {}
-
-podSecurityContext: {}
-  # fsGroup: 2000
-
-securityContext: {}
-  # capabilities:
-  #   drop:
-  #   - ALL
-  # readOnlyRootFilesystem: true
-  # runAsNonRoot: true
-  # runAsUser: 1000
-
+# -- Configures service settings for the chart. Normally this does not need to be modified.
+# @default -- Disabled
 service:
-  type: ClusterIP
-  port: 80
+  main:
+    enabled: false
+    ports:
+      http:
+        port: 5800
+  myjd:
+    enabled: true
+    ports:
+      myjd:
+        port: 3129
 
+# -- Enable and configure ingress settings for the chart under this key.
+# @default -- Disabled
 ingress:
-  enabled: false
-  className: ""
-  annotations: {}
-    # kubernetes.io/ingress.class: nginx
-    # kubernetes.io/tls-acme: "true"
-  hosts:
-    - host: chart-example.local
-      paths:
-        - path: /
-          pathType: ImplementationSpecific
-  tls: []
-  #  - secretName: chart-example-tls
-  #    hosts:
-  #      - chart-example.local
+  main:
+    enabled: false
 
-resources: {}
-  # We usually recommend not to specify default resources and to leave this as a conscious
-  # choice for the user. This also increases chances charts run on environments with little
-  # resources, such as Minikube. If you do want to specify resources, uncomment the following
-  # lines, adjust them as necessary, and remove the curly braces after 'resources:'.
-  # limits:
-  #   cpu: 100m
-  #   memory: 128Mi
-  # requests:
-  #   cpu: 100m
-  #   memory: 128Mi
+# -- Configures probes for the chart. Normally this does not need to be modified.
+# @default -- Disabled
+probes:
+  liveness:
+    enabled: false
+  readiness:
+    enabled: false
+  startup:
+    enabled: false
 
-autoscaling:
-  enabled: false
-  minReplicas: 1
-  maxReplicas: 100
-  targetCPUUtilizationPercentage: 80
-  # targetMemoryUtilizationPercentage: 80
+# -- Configure persistence settings for the chart under this key.
+# @default -- See values.yaml
+persistence:
+  config:
+    enabled: false
+    mountPath: "/opt/JDownloader/app/cfg"
+    existingClaim: jdownloader-config
+  # -- use NFS for download folders
+  media:
+    enabled: false
+    type: custom
+    volumeSpec:
+      nfs:
+        server: 10.0.0.1
+        path: /mnt/Media
+    mountPath: /opt/JDownloader/Downloads
+    readOnly: false
 
-nodeSelector: {}
 
-tolerations: []
-
-affinity: {}
