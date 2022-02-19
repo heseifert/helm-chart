@@ -36,15 +36,6 @@ jobs:
           helm: "3.8.0"
           yq: "4.16.2"
 
-      - name: Install helm-docs
-        run: |
-          wget -O /tmp/helm-docs.deb  https://github.com/k8s-at-home/helm-docs/releases/download/v0.1.1/helm-docs_0.1.1_Linux_x86_64.deb
-          sudo dpkg -i /tmp/helm-docs.deb
-
-      - name: Collect changes
-        id: collect-changes
-        uses: ./.github/actions/collect-changes
-
       - name: Create commit
         id: create-commit
         uses: stefanzweifel/git-auto-commit-action@v4
@@ -77,10 +68,8 @@ jobs:
           git config user.email "heseifert[bot]@users.noreply.github.com"
 
       - name: Run chart-releaser
-        uses: helm/chart-releaser-action@v1.2.1
+        uses: helm/chart-releaser-action@v1.3.0
         with:
-          charts_dir: charts/*
-          charts_repo_url: https://heseifert.github.io/helm-chart
+          charts_dir: charts
         env:
           CR_TOKEN: "${{ steps.generate-token.outputs.token }}"
-          CR_SKIP_EXISTING: "true"
