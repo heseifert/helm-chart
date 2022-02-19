@@ -3,6 +3,30 @@ entries:
   jdownloader2:
   - apiVersion: v2
     appVersion: 2.0.3
+    created: "2022-02-19T22:16:34.43343083Z"
+    dependencies:
+    - name: common
+      repository: https://library-charts.k8s-at-home.com
+      version: 4.3.0
+    description: Jdownloader2
+    digest: 6d568dc32c72605af4e23ac48a20a2df1866d5aa58ca36c2d30ad866c7ac893e
+    home: https://github.com/heseifert/helm-chart/tree/main/charts/jdownloader2
+    icon: https://www.freeiconspng.com/uploads/jdownloader-icon-2.png
+    keywords:
+    - jdownloader
+    - media
+    kubeVersion: '>=1.16.0-0'
+    maintainers:
+    - email: heseifert@users.noreply.github.com
+      name: heseifert
+    name: jdownloader2
+    sources:
+    - https://hub.docker.com/r/jaymoulin/jdownloader
+    urls:
+    - https://github.com/heseifert/helm-chart/releases/download/jdownloader2-1.0.0/jdownloader2-1.0.0.tgz
+    version: 1.0.0
+  - apiVersion: v2
+    appVersion: 2.0.3
     created: "2022-02-19T22:07:51.487273132Z"
     dependencies:
     - name: common
@@ -25,4 +49,4 @@ entries:
     urls:
     - https://github.com/heseifert/helm-chart/releases/download/jdownloader2-0.2.0/jdownloader2-0.2.0.tgz
     version: 0.2.0
-generated: "2022-02-19T22:07:51.487280032Z"
+generated: "2022-02-19T22:16:34.43345003Z"
