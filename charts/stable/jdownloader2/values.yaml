@@ -62,16 +62,19 @@ probes:
 # -- Configure persistence settings for the chart under this key.
 # @default -- See values.yaml
 persistence:
+
 # JDownloader needs persistent data for updates
   data:
     enabled: true
     mountPath: "/opt/JDownloader/app"
     # existingClaim: jdownloader-data
+
 # JDownloader needs persistent config
   config:
     enabled: true
     mountPath: "/opt/JDownloader/app/cfg"
     # existingClaim: jdownloader-config
+
   # -- use NFS for download folders
   media:
     enabled: false
