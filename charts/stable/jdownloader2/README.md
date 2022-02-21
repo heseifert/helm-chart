@@ -1,6 +1,6 @@
 # jdownloader2
 
-![Version: 1.0.4](https://img.shields.io/badge/Version-1.0.4-informational?style=flat-square) ![AppVersion: 2.0.3](https://img.shields.io/badge/AppVersion-2.0.3-informational?style=flat-square)
+![Version: 1.0.5](https://img.shields.io/badge/Version-1.0.5-informational?style=flat-square) ![AppVersion: 2.0.3](https://img.shields.io/badge/AppVersion-2.0.3-informational?style=flat-square)
 
 Jdownloader2
 
@@ -82,7 +82,7 @@ N/A
 | env.TZ | string | `"UTC"` | Set the container timezone |
 | image.pullPolicy | string | `"IfNotPresent"` | image pull policy |
 | image.repository | string | `"jaymoulin/jdownloader"` | image repository |
-| image.tag | string | `"v2.0.7"` | image tag |
+| image.tag | string | `"v2.0.3"` | image tag |
 | ingress | object | Disabled | Enable and configure ingress settings for the chart under this key. |
 | persistence | object | See values.yaml | Configure persistence settings for the chart under this key. |
 | persistence.media | object | `{"enabled":false,"mountPath":"/opt/JDownloader/Downloads","readOnly":false,"type":"custom","volumeSpec":{"nfs":{"path":"/mnt/Media","server":"10.0.0.1"}}}` | use NFS for download folders |
@@ -92,7 +92,7 @@ N/A
 
 ## Changelog
 
-### Version 1.0.4
+### Version 1.0.5
 
 ### Older versions
 
