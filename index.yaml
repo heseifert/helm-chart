@@ -193,4 +193,30 @@ entries:
     urls:
     - https://github.com/heseifert/helm-chart/releases/download/jdownloader2-0.2.0/jdownloader2-0.2.0.tgz
     version: 0.2.0
-generated: "2022-02-21T10:50:22.38677155Z"
+  nextcloud-exporter:
+  - apiVersion: v2
+    appVersion: 0.5.0
+    created: "2022-02-21T15:08:53.427294442Z"
+    dependencies:
+    - name: common
+      repository: https://library-charts.k8s-at-home.com
+      version: 4.3.0
+    description: Prometheus Exporter for Nextcloud
+    digest: a20ab3ebf9f8179fa974c5da175b1e1eac11b3b8c528dc08bb272a386d85e586
+    home: https://github.com/heseifert/helm-chart/tree/main/charts/nextcloud-exporter
+    icon: https://upload.wikimedia.org/wikipedia/commons/thumb/6/60/Nextcloud_Logo.svg/300px-Nextcloud_Logo.svg.png
+    keywords:
+    - jdownloader
+    - media
+    kubeVersion: '>=1.16.0-0'
+    maintainers:
+    - email: heseifert@users.noreply.github.com
+      name: heseifert
+    name: nextcloud-exporter
+    sources:
+    - https://hub.docker.com/r/xperimental/nextcloud-exporter
+    - ghcr.io/xperimental/nextcloud-exporter
+    urls:
+    - https://github.com/heseifert/helm-chart/releases/download/nextcloud-exporter-0.0.1/nextcloud-exporter-0.0.1.tgz
+    version: 0.0.1
+generated: "2022-02-21T15:08:53.427322842Z"
