@@ -1,0 +1,21 @@
+apiVersion: v2
+description: Prometheus Exporter for Nextcloud
+name: nextcloud-exporter
+version: 0.0.1
+appVersion: 0.5.0
+kubeVersion: ">=1.16.0-0"
+keywords:
+  - jdownloader
+  - media
+home: https://github.com/heseifert/helm-chart/tree/main/charts/nextcloud-exporter
+icon: https://upload.wikimedia.org/wikipedia/commons/thumb/6/60/Nextcloud_Logo.svg/300px-Nextcloud_Logo.svg.png
+sources:
+  - https://hub.docker.com/r/xperimental/nextcloud-exporter
+  - ghcr.io/xperimental/nextcloud-exporter
+maintainers:
+  - name: heseifert
+    email: heseifert@users.noreply.github.com
+dependencies:
+  - name: common
+    repository: https://library-charts.k8s-at-home.com
+    version: 4.3.0

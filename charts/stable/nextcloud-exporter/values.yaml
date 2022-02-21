@@ -1,0 +1,63 @@
+#
+# IMPORTANT NOTE
+#
+# This chart inherits from our common library chart. You can check the default values/options here:
+# https://github.com/k8s-at-home/library-charts/tree/main/charts/stable/common/values.yaml
+#
+replicas: 1
+
+image:
+  # -- image repository
+  repository: xperimental/nextcloud-exporter
+  # -- image pull policy
+  pullPolicy: IfNotPresent
+  # -- image tag
+  tag: 0.5.0
+
+# -- environment variables. See more environment variables in the [emby documentation](https://emby.org/docs)
+# @default -- See below
+env:
+  # -- Set the container timezone
+  TZ: UTC
+  # -- Set Nextcloud Server
+  NEXTCLOUD_SERVER: https://nextcloud.localhost.de
+  # -- Set Credentials for Access (for older setups)
+  # NEXTCLOUD_USERNAME: admin
+  # NEXTCLOUD_PASSWORD: secret
+  # -- Set Use Token since Nextcloud 22 (better)
+  NEXTCLOUD_AUTH_TOKEN: ""
+  # -- Set Listen Address for Metrics
+  NEXTCLOUD_LISTEN_ADDRESS: ":9205"
+  # -- Skip TLS Verification for self-signed certificates
+  NEXTCLOUD_TLS_SKIP_VERIFY: true
+
+# -- Configures service settings for the chart. Normally this does not need to be modified.
+# @default -- Disabled
+service:
+  main:
+    enabled: true
+    ports:
+      http:
+        port: 9205
+
+# -- Enable and configure ingress settings for the chart under this key.
+# @default -- Disabled
+ingress:
+  main:
+    enabled: false
+
+# -- Configures probes for the chart. Normally this does not need to be modified.
+# @default -- Disabled
+probes:
+  liveness:
+    enabled: false
+  readiness:
+    enabled: false
+  startup:
+    enabled: false
+
+# -- Configure Limits for resources
+# resources:
+#   limits:
+#     cpu: 10m
+#     memory: 128Mi
