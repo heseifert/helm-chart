@@ -1,14 +1,15 @@
-# jdownloader2
+# nextcloud-exporter
 
-![Version: 1.0.5](https://img.shields.io/badge/Version-1.0.5-informational?style=flat-square) ![AppVersion: 2.0.3](https://img.shields.io/badge/AppVersion-2.0.3-informational?style=flat-square)
+![Version: 0.0.1](https://img.shields.io/badge/Version-0.0.1-informational?style=flat-square) ![AppVersion: 0.5.0](https://img.shields.io/badge/AppVersion-0.5.0-informational?style=flat-square)
 
-Jdownloader2
+Prometheus Exporter for Nextcloud
 
 **This chart is not maintained by the upstream project and any issues with the chart should be raised [here](https://github.com/k8s-at-home/charts/issues/new/choose)**
 
 ## Source Code
 
-* <https://hub.docker.com/r/jaymoulin/jdownloader>
+* <https://hub.docker.com/r/xperimental/nextcloud-exporter>
+* <ghcr.io/xperimental/nextcloud-exporter>
 
 ## Requirements
 
@@ -25,23 +26,23 @@ Kubernetes: `>=1.16.0-0`
 ```console
 helm repo add k8s-at-home https://k8s-at-home.com/charts/
 helm repo update
-helm install jdownloader2 k8s-at-home/jdownloader2
+helm install nextcloud-exporter k8s-at-home/nextcloud-exporter
 ```
 
 ## Installing the Chart
 
-To install the chart with the release name `jdownloader2`
+To install the chart with the release name `nextcloud-exporter`
 
 ```console
-helm install jdownloader2 k8s-at-home/jdownloader2
+helm install nextcloud-exporter k8s-at-home/nextcloud-exporter
 ```
 
 ## Uninstalling the Chart
 
-To uninstall the `jdownloader2` deployment
+To uninstall the `nextcloud-exporter` deployment
 
 ```console
-helm uninstall jdownloader2
+helm uninstall nextcloud-exporter
 ```
 
 The command removes all the Kubernetes components associated with the chart **including persistent volumes** and deletes the release.
@@ -54,15 +55,15 @@ Other values may be used from the [values.yaml](https://github.com/k8s-at-home/l
 Specify each parameter using the `--set key=value[,key=value]` argument to `helm install`.
 
 ```console
-helm install jdownloader2 \
+helm install nextcloud-exporter \
   --set env.TZ="America/New York" \
-    k8s-at-home/jdownloader2
+    k8s-at-home/nextcloud-exporter
 ```
 
 Alternatively, a YAML file that specifies the values for the above parameters can be provided while installing the chart.
 
 ```console
-helm install jdownloader2 k8s-at-home/jdownloader2 -f values.yaml
+helm install nextcloud-exporter k8s-at-home/nextcloud-exporter -f values.yaml
 ```
 
 ## Custom configuration
@@ -76,27 +77,26 @@ N/A
 | Key | Type | Default | Description |
 |-----|------|---------|-------------|
 | env | object | See below | environment variables. See more environment variables in the [emby documentation](https://emby.org/docs) |
-| env.MYJD_DEVICE_NAME | string | `"JD"` | Set MyJD Devicename |
-| env.MYJD_PASSWORD | string | `"SECRET"` | Set MyJD Password > use secretKeyRef: |
-| env.MYJD_USER | string | `"email@email.com"` | Set MyJD Username |
+| env.NEXTCLOUD_AUTH_TOKEN | string | `""` | Set Credentials for Access (for older setups) NEXTCLOUD_USERNAME: admin NEXTCLOUD_PASSWORD: secret -- Set Use Token since Nextcloud 22 (better) |
+| env.NEXTCLOUD_LISTEN_ADDRESS | string | `":9205"` | Set Listen Address for Metrics |
+| env.NEXTCLOUD_SERVER | string | `"https://nextcloud.localhost.de"` | Set Nextcloud Server |
+| env.NEXTCLOUD_TLS_SKIP_VERIFY | bool | `true` | Skip TLS Verification for self-signed certificates |
 | env.TZ | string | `"UTC"` | Set the container timezone |
 | image.pullPolicy | string | `"IfNotPresent"` | image pull policy |
-| image.repository | string | `"jaymoulin/jdownloader"` | image repository |
-| image.tag | string | `"v2.0.3"` | image tag |
+| image.repository | string | `"xperimental/nextcloud-exporter"` | image repository |
+| image.tag | string | `"0.5.0"` | image tag |
 | ingress | object | Disabled | Enable and configure ingress settings for the chart under this key. |
-| persistence | object | See values.yaml | Configure persistence settings for the chart under this key. |
-| persistence.media | object | `{"enabled":false,"mountPath":"/opt/JDownloader/Downloads","readOnly":false,"type":"custom","volumeSpec":{"nfs":{"path":"/mnt/Media","server":"10.0.0.1"}}}` | use NFS for download folders |
 | probes | object | Disabled | Configures probes for the chart. Normally this does not need to be modified. |
 | replicas | int | `1` |  IMPORTANT NOTE This chart inherits from our common library chart. You can check the default values/options here: https://github.com/k8s-at-home/library-charts/tree/main/charts/stable/common/values.yaml |
 | service | object | Disabled | Configures service settings for the chart. Normally this does not need to be modified. |
 
 ## Changelog
 
-### Version 1.0.5
+### Version 0.0.1
 
 ### Older versions
 
-A historical overview of changes can be found on [ArtifactHUB](https://artifacthub.io/packages/helm/k8s-at-home/jdownloader2?modal=changelog)
+A historical overview of changes can be found on [ArtifactHUB](https://artifacthub.io/packages/helm/k8s-at-home/nextcloud-exporter?modal=changelog)
 
 ## Support
 
