@@ -68,12 +68,16 @@ persistence:
     enabled: true
     mountPath: "/opt/JDownloader/app"
     # existingClaim: jdownloader-data
+    accessMode: ReadWriteOnce
+    size: 256Mi
 
 # JDownloader needs persistent config
   config:
     enabled: true
     mountPath: "/opt/JDownloader/app/cfg"
     # existingClaim: jdownloader-config
+    accessMode: ReadWriteOnce
+    size: 64Mi
 
   # -- use NFS for download folders
   media:
