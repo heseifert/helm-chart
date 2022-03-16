@@ -1,14 +1,22 @@
 image:
-  repository: tccr.io/truecharts/clamav
+  repository: abesesr/clamscan-docker
   pullPolicy: IfNotPresent
-  tag: v0.104.2@sha256:eb816a62ce0b7c331d893e8d51e54fe96b1cb5878c7394e935a48468b0b44f6d
+  tag: latest
 
 env:
-  CLAMAV_NO_CLAMD: false
-  CLAMAV_NO_FRESHCLAMD: false
-  CLAMAV_NO_MILTERD: true
-  CLAMD_STARTUP_TIMEOUT: 1800
-  FRESHCLAM_CHECKS: 1
+  SCAN_AT_STARTUP: 1 # if 1, then start with a scan when the container is created (default is 1)
+  FRESHCLAM_AT_STARTUP: 1 # if 1, then update the virus database when the container startup (default is 1)
+  SCAN_ONLY_NEW_FILES: 1 # if 1, then the scan will scan a first time the whole FOLDER_TO_SCAN content, and the next time (see CRON_CLAMSCAN) it will only scan the new files found. Thanks to this feature, the process will be lighter (less CPU usage) especially when there is lot and lot of files in FOLDER_TO_SCAN (default is 1)
+  FOLDER_TO_SCAN: "/scandir" # this is the folder to scan with clamscan (default is /folder-to-scan/)
+  CRON_CLAMSCAN: 0 0 30 * * * # crontab parameters to run the clamscan command which is used to scan the FOLDER_TO_SCAN (default is */5 * * * * - it means each 5 minutes)
+  CRON_FRESHCLAM: 0 0 * * * * # crontab parameters to run the freshclam command which is used to update virus databases (default is 0 * * * * * - it means each hours)
+  ALERT_MAILTO: notification@mail.com # email address to send the alerts to (empty value as default so nothing is sent as)
+  ALERT_SUBJECT: "Malware found by ClamAV" # email subject for sending alerts to (Alert from clamscan ! is the default value)
+  SMTP_TLS: on # to enable TLS, set the value to on (default is off)
+  SMTP_HOST: smtp.mail.com # host or ip of the smtp server used to send the alerts (default is 127.0.0.1)
+  SMTP_PORT: 25 # port of the smtp server used to send the alerts (default is25)
+  SMTP_USER: username # smtp server login (empty value as default)
+  SMTP_PASSWORD: password # smtp server password (empty value as default)
 
 podSecurityContext:
   runAsUser: 0
@@ -20,38 +28,11 @@ securityContext:
 
 probes:
   liveness:
-    enabled: true
-    custom: true
-    spec:
-      exec:
-        command:
-          - clamdcheck.sh
-      initialDelaySeconds: 15
-      periodSeconds: 30
-      failureThreshold: 10
-      timeoutSeconds: 1
+    enabled: false
   readiness:
-    enabled: true
-    custom: true
-    spec:
-      exec:
-        command:
-          - clamdcheck.sh
-      initialDelaySeconds: 15
-      periodSeconds: 30
-      failureThreshold: 10
-      timeoutSeconds: 1
+    enabled: false
   startup:
-    enabled: true
-    custom: true
-    spec:
-      exec:
-        command:
-          - clamdcheck.sh
-      initialDelaySeconds: 15
-      periodSeconds: 30
-      failureThreshold: 10
-      timeoutSeconds: 1
+    enabled: false
 
 service:
   main:
