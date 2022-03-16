@@ -3,14 +3,14 @@ entries:
   clamav:
   - apiVersion: v2
     appVersion: 1.4.3
-    created: "2022-03-16T11:41:34.454912735Z"
+    created: "2022-03-16T11:42:20.023391858Z"
     dependencies:
     - name: common
       repository: https://library-charts.k8s-at-home.com
       version: 4.3.0
     description: ClamAV® is an open source antivirus engine for detecting trojans,
       viruses, malware & other malicious threats.
-    digest: 8d2cdba0a15e5e96f76f20874f0fa59da43afdb25fde367ddae02e11a7fd6d68
+    digest: 958f5211b90e6fef63784b327e45e8d325f9049fe7df04b74be0841004df5fd3
     home: https://github.com/heseifert/helm-chart/tree/main/charts/clamav
     icon: https://truecharts.org/_static/img/appicons/clamav.png
     keywords:
@@ -26,8 +26,8 @@ entries:
     - https://hub.docker.com/r/abesesr/clamscan-docker
     - https://docs.clamav.net/
     urls:
-    - https://github.com/heseifert/helm-chart/releases/download/clamav-1.0.1/clamav-1.0.1.tgz
-    version: 1.0.1
+    - https://github.com/heseifert/helm-chart/releases/download/clamav-1.0.2/clamav-1.0.2.tgz
+    version: 1.0.2
   - apiVersion: v2
     appVersion: 0.104.2
     created: "2022-03-16T10:56:41.465128586Z"
@@ -324,4 +324,4 @@ entries:
     urls:
     - https://github.com/heseifert/helm-chart/releases/download/nextcloud-exporter-0.0.1/nextcloud-exporter-0.0.1.tgz
     version: 0.0.1
-generated: "2022-03-16T11:41:34.454951435Z"
+generated: "2022-03-16T11:42:20.023438858Z"
