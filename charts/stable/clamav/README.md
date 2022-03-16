@@ -1,6 +1,6 @@
 # clamav
 
-![Version: 1.0.0](https://img.shields.io/badge/Version-1.0.0-informational?style=flat-square) ![AppVersion: 0.104.2](https://img.shields.io/badge/AppVersion-0.104.2-informational?style=flat-square)
+![Version: 1.0.1](https://img.shields.io/badge/Version-1.0.1-informational?style=flat-square) ![AppVersion: 1.4.3](https://img.shields.io/badge/AppVersion-1.4.3-informational?style=flat-square)
 
 ClamAV® is an open source antivirus engine for detecting trojans, viruses, malware & other malicious threats.
 
@@ -8,8 +8,7 @@ ClamAV® is an open source antivirus engine for detecting trojans, viruses, malw
 
 ## Source Code
 
-* <https://github.com/Cisco-Talos/clamav>
-* <https://hub.docker.com/r/clamav/clamav>
+* <https://hub.docker.com/r/abesesr/clamscan-docker>
 * <https://docs.clamav.net/>
 
 ## Requirements
@@ -77,41 +76,31 @@ N/A
 
 | Key | Type | Default | Description |
 |-----|------|---------|-------------|
-| env.CLAMAV_NO_CLAMD | bool | `false` |  |
-| env.CLAMAV_NO_FRESHCLAMD | bool | `false` |  |
-| env.CLAMAV_NO_MILTERD | bool | `true` |  |
-| env.CLAMD_STARTUP_TIMEOUT | int | `1800` |  |
-| env.FRESHCLAM_CHECKS | int | `1` |  |
+| env.ALERT_MAILTO | string | `"notification@mail.com"` |  |
+| env.ALERT_SUBJECT | string | `"Malware found by ClamAV"` |  |
+| env.CRON_CLAMSCAN | string | `"0 0 30 * * *"` |  |
+| env.CRON_FRESHCLAM | string | `"0 0 * * * *"` |  |
+| env.FOLDER_TO_SCAN | string | `"/scandir"` |  |
+| env.FRESHCLAM_AT_STARTUP | int | `1` |  |
+| env.SCAN_AT_STARTUP | int | `1` |  |
+| env.SCAN_ONLY_NEW_FILES | int | `1` |  |
+| env.SMTP_HOST | string | `"smtp.mail.com"` |  |
+| env.SMTP_PASSWORD | string | `"password"` |  |
+| env.SMTP_PORT | int | `25` |  |
+| env.SMTP_TLS | string | `"on"` |  |
+| env.SMTP_USER | string | `"username"` |  |
 | image.pullPolicy | string | `"IfNotPresent"` |  |
-| image.repository | string | `"tccr.io/truecharts/clamav"` |  |
-| image.tag | string | `"v0.104.2@sha256:eb816a62ce0b7c331d893e8d51e54fe96b1cb5878c7394e935a48468b0b44f6d"` |  |
+| image.repository | string | `"abesesr/clamscan-docker"` |  |
+| image.tag | string | `"latest"` |  |
 | persistence.sigdatabase.accessMode | string | `"ReadWriteOnce"` |  |
 | persistence.sigdatabase.enabled | bool | `true` |  |
 | persistence.sigdatabase.mountPath | string | `"/var/lib/clamav"` |  |
 | persistence.sigdatabase.size | string | `"256Mi"` |  |
 | podSecurityContext.runAsGroup | int | `0` |  |
 | podSecurityContext.runAsUser | int | `0` |  |
-| probes.liveness.custom | bool | `true` |  |
-| probes.liveness.enabled | bool | `true` |  |
-| probes.liveness.spec.exec.command[0] | string | `"clamdcheck.sh"` |  |
-| probes.liveness.spec.failureThreshold | int | `10` |  |
-| probes.liveness.spec.initialDelaySeconds | int | `15` |  |
-| probes.liveness.spec.periodSeconds | int | `30` |  |
-| probes.liveness.spec.timeoutSeconds | int | `1` |  |
-| probes.readiness.custom | bool | `true` |  |
-| probes.readiness.enabled | bool | `true` |  |
-| probes.readiness.spec.exec.command[0] | string | `"clamdcheck.sh"` |  |
-| probes.readiness.spec.failureThreshold | int | `10` |  |
-| probes.readiness.spec.initialDelaySeconds | int | `15` |  |
-| probes.readiness.spec.periodSeconds | int | `30` |  |
-| probes.readiness.spec.timeoutSeconds | int | `1` |  |
-| probes.startup.custom | bool | `true` |  |
-| probes.startup.enabled | bool | `true` |  |
-| probes.startup.spec.exec.command[0] | string | `"clamdcheck.sh"` |  |
-| probes.startup.spec.failureThreshold | int | `10` |  |
-| probes.startup.spec.initialDelaySeconds | int | `15` |  |
-| probes.startup.spec.periodSeconds | int | `30` |  |
-| probes.startup.spec.timeoutSeconds | int | `1` |  |
+| probes.liveness.enabled | bool | `false` |  |
+| probes.readiness.enabled | bool | `false` |  |
+| probes.startup.enabled | bool | `false` |  |
 | securityContext.readOnlyRootFilesystem | bool | `false` |  |
 | securityContext.runAsNonRoot | bool | `false` |  |
 | service.main.ports.main.port | int | `3310` |  |
@@ -123,7 +112,7 @@ N/A
 
 ## Changelog
 
-### Version 1.0.0
+### Version 1.0.1
 
 ### Older versions
 
