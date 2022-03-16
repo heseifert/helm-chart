@@ -56,6 +56,14 @@ probes:
   startup:
     enabled: false
 
+metrics:
+  enabled: true
+  serviceMonitor:
+    interval: 1m
+    scrapeTimeout: 30s
+  prometheusRule:
+    enabled: true
+
 # -- Configure Limits for resources
 # resources:
 #   limits:
