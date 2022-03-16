@@ -1,6 +1,6 @@
 # nextcloud-exporter
 
-![Version: 0.0.1](https://img.shields.io/badge/Version-0.0.1-informational?style=flat-square) ![AppVersion: 0.5.0](https://img.shields.io/badge/AppVersion-0.5.0-informational?style=flat-square)
+![Version: 0.0.2](https://img.shields.io/badge/Version-0.0.2-informational?style=flat-square) ![AppVersion: 0.5.0](https://img.shields.io/badge/AppVersion-0.5.0-informational?style=flat-square)
 
 Prometheus Exporter for Nextcloud
 
@@ -86,13 +86,17 @@ N/A
 | image.repository | string | `"xperimental/nextcloud-exporter"` | image repository |
 | image.tag | string | `"0.5.0"` | image tag |
 | ingress | object | Disabled | Enable and configure ingress settings for the chart under this key. |
+| metrics.enabled | bool | `true` |  |
+| metrics.prometheusRule.enabled | bool | `true` |  |
+| metrics.serviceMonitor.interval | string | `"1m"` |  |
+| metrics.serviceMonitor.scrapeTimeout | string | `"30s"` |  |
 | probes | object | Disabled | Configures probes for the chart. Normally this does not need to be modified. |
 | replicas | int | `1` |  IMPORTANT NOTE This chart inherits from our common library chart. You can check the default values/options here: https://github.com/k8s-at-home/library-charts/tree/main/charts/stable/common/values.yaml |
 | service | object | Disabled | Configures service settings for the chart. Normally this does not need to be modified. |
 
 ## Changelog
 
-### Version 0.0.1
+### Version 0.0.2
 
 ### Older versions
 
