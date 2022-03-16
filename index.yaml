@@ -1,6 +1,59 @@
 apiVersion: v1
 entries:
+  clamav:
+  - apiVersion: v2
+    appVersion: 0.104.2
+    created: "2022-03-16T10:56:41.465128586Z"
+    dependencies:
+    - name: common
+      repository: https://library-charts.k8s-at-home.com
+      version: 4.3.0
+    description: ClamAV® is an open source antivirus engine for detecting trojans,
+      viruses, malware & other malicious threats.
+    digest: 049708886d9a1b670366e2bb088dfb47726752d9b3ac4390525d9e74ef4aa6b6
+    home: https://github.com/heseifert/helm-chart/tree/main/charts/clamav
+    icon: https://truecharts.org/_static/img/appicons/clamav.png
+    keywords:
+    - clamav
+    - malware
+    - virus
+    kubeVersion: '>=1.16.0-0'
+    maintainers:
+    - email: heseifert@users.noreply.github.com
+      name: heseifert
+    name: clamav
+    sources:
+    - https://github.com/Cisco-Talos/clamav
+    - https://hub.docker.com/r/clamav/clamav
+    - https://docs.clamav.net/
+    urls:
+    - https://github.com/heseifert/helm-chart/releases/download/clamav-1.0.0/clamav-1.0.0.tgz
+    version: 1.0.0
   jdownloader2:
+  - apiVersion: v2
+    appVersion: 2.0.3
+    created: "2022-03-16T10:56:41.666847348Z"
+    dependencies:
+    - name: common
+      repository: https://library-charts.k8s-at-home.com
+      version: 4.3.0
+    description: Jdownloader2
+    digest: 1332e42a91c332be8a0863df4e3b1eafba588ed97172904221d29b4fc26bafb4
+    home: https://github.com/heseifert/helm-chart/tree/main/charts/jdownloader2
+    icon: https://www.freeiconspng.com/uploads/jdownloader-icon-2.png
+    keywords:
+    - jdownloader
+    - media
+    kubeVersion: '>=1.16.0-0'
+    maintainers:
+    - email: heseifert@users.noreply.github.com
+      name: heseifert
+    name: jdownloader2
+    sources:
+    - https://hub.docker.com/r/jaymoulin/jdownloader
+    urls:
+    - https://github.com/heseifert/helm-chart/releases/download/jdownloader2-1.0.7/jdownloader2-1.0.7.tgz
+    version: 1.0.7
   - apiVersion: v2
     appVersion: 2.0.3
     created: "2022-02-21T10:50:22.38673185Z"
@@ -244,4 +297,4 @@ entries:
     urls:
     - https://github.com/heseifert/helm-chart/releases/download/nextcloud-exporter-0.0.1/nextcloud-exporter-0.0.1.tgz
     version: 0.0.1
-generated: "2022-03-16T10:34:36.352060402Z"
+generated: "2022-03-16T10:56:41.666929853Z"
