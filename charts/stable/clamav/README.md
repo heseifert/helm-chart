@@ -1,6 +1,6 @@
 # clamav
 
-![Version: 1.0.1](https://img.shields.io/badge/Version-1.0.1-informational?style=flat-square) ![AppVersion: 1.4.3](https://img.shields.io/badge/AppVersion-1.4.3-informational?style=flat-square)
+![Version: 1.0.2](https://img.shields.io/badge/Version-1.0.2-informational?style=flat-square) ![AppVersion: 1.4.3](https://img.shields.io/badge/AppVersion-1.4.3-informational?style=flat-square)
 
 ClamAV® is an open source antivirus engine for detecting trojans, viruses, malware & other malicious threats.
 
@@ -105,14 +105,10 @@ N/A
 | securityContext.runAsNonRoot | bool | `false` |  |
 | service.main.ports.main.port | int | `3310` |  |
 | service.main.ports.main.targetPort | int | `3310` |  |
-| service.milter.enabled | bool | `true` |  |
-| service.milter.ports.milter.enabled | bool | `true` |  |
-| service.milter.ports.milter.port | int | `7357` |  |
-| service.milter.ports.milter.targetPort | int | `7357` |  |
 
 ## Changelog
 
-### Version 1.0.1
+### Version 1.0.2
 
 ### Older versions
 
