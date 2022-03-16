@@ -1,6 +1,6 @@
 # jdownloader2
 
-![Version: 1.0.6](https://img.shields.io/badge/Version-1.0.6-informational?style=flat-square) ![AppVersion: 2.0.3](https://img.shields.io/badge/AppVersion-2.0.3-informational?style=flat-square)
+![Version: 1.0.7](https://img.shields.io/badge/Version-1.0.7-informational?style=flat-square) ![AppVersion: 2.0.3](https://img.shields.io/badge/AppVersion-2.0.3-informational?style=flat-square)
 
 Jdownloader2
 
@@ -92,7 +92,7 @@ N/A
 
 ## Changelog
 
-### Version 1.0.6
+### Version 1.0.7
 
 ### Older versions
 
