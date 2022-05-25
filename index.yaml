@@ -59,6 +59,30 @@ entries:
   jdownloader2:
   - apiVersion: v2
     appVersion: 2.0.3
+    created: "2022-05-25T10:58:17.842754889Z"
+    dependencies:
+    - name: common
+      repository: https://library-charts.k8s-at-home.com
+      version: 4.4.2
+    description: Jdownloader2
+    digest: 446fbec8da60951ff2dee0bb3344cc4067a008e85d350f56d359c8d207b992cb
+    home: https://github.com/heseifert/helm-chart/tree/main/charts/jdownloader2
+    icon: https://www.freeiconspng.com/uploads/jdownloader-icon-2.png
+    keywords:
+    - jdownloader
+    - media
+    kubeVersion: '>=1.16.0-0'
+    maintainers:
+    - email: heseifert@users.noreply.github.com
+      name: heseifert
+    name: jdownloader2
+    sources:
+    - https://hub.docker.com/r/jaymoulin/jdownloader
+    urls:
+    - https://github.com/heseifert/helm-chart/releases/download/jdownloader2-1.0.8/jdownloader2-1.0.8.tgz
+    version: 1.0.8
+  - apiVersion: v2
+    appVersion: 2.0.3
     created: "2022-03-16T10:56:41.666847348Z"
     dependencies:
     - name: common
@@ -324,4 +348,4 @@ entries:
     urls:
     - https://github.com/heseifert/helm-chart/releases/download/nextcloud-exporter-0.0.1/nextcloud-exporter-0.0.1.tgz
     version: 0.0.1
-generated: "2022-03-16T11:42:20.023438858Z"
+generated: "2022-05-25T10:58:17.842824491Z"
